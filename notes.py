@@ -25,6 +25,14 @@ db: List[Notes] = [
 def main():
     return {"ur": "mom"}
 
+#fetches all the notes 
 @app.get('/notes')
 def allNotes():
     return db
+
+#creates a new note and adds it to our "database"
+@app.post('/notes')
+async def createNote(note: Notes):
+    db.append(note)
+    return {"status": 200}
+
