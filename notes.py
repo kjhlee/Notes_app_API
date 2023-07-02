@@ -51,8 +51,9 @@ async def deleteNote(noteTitle: str):
 
 @app.put('/notes/{noteTitle}')
 async def updateNote(noteTitle: str, updatedNote: Notes):
+    #need a way to make sure the account thats changing is the same and make sure the document is locked 
     for notes in db:
-        if notes.title == noteTitle:
+        if notes.title == noteTitle and notes.locked != False:
             updatedNote.text = notes.text    
             return {"status": 200}
     raise HTTPException(
