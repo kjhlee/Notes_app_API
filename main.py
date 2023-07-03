@@ -10,7 +10,7 @@ mainApp.mount("/", app)
 
 async def createNewNote():
     newText = input("this is a new note that I would like to add: ")
-    createNewNote = Notes(
+    newNote = Notes(
         title = "text2",
         text = newText,
         locked = True,
@@ -21,7 +21,7 @@ async def createNewNote():
             state = "active"
         )
     )
-    await createNote(createNewNote)
+    await createNote(newNote)
 
 
 async def main():
