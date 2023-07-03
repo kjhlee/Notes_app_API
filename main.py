@@ -9,7 +9,7 @@ mainApp = FastAPI()
 mainApp.mount("/", app)
 
 async def createNewNote():
-    newText = input("this is a new note that I would like to add")
+    newText = input("this is a new note that I would like to add: ")
     createNewNote = Notes(
         title = "text2",
         text = newText,
