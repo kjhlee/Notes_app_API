@@ -3,7 +3,6 @@ from notes import *
 from models import Notes, authorModel
 import asyncio
 import uvicorn
-import json
 
 mainApp = FastAPI()
 
