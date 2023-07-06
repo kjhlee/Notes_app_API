@@ -55,7 +55,7 @@ async def updateNote(noteTitle: str, updatedText: str):
     print(db)
     #need a way to make sure the account thats changing is the same and make sure the document is locked 
     for notes in db:
-        if notes.title == noteTitle and notes.locked != False:
+        if notes.title == noteTitle:
             notes.text = updatedText    
             return {"status": 200}
     raise HTTPException(

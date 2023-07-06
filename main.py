@@ -2,7 +2,6 @@ from fastapi import FastAPI
 from notes import *
 from models import Notes, authorModel
 import asyncio
-import uvicorn
 
 
 
