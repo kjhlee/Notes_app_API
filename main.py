@@ -4,16 +4,14 @@ from models import Notes, authorModel
 import asyncio
 import uvicorn
 
-mainApp = FastAPI()
 
-mainApp.mount("/", app)
 
 async def createNewNote():
     newText = input("this is a new note that I would like to add: ")
     newNote = Notes(
         title = "text2",
         text = newText,
-        locked = True,
+        locked = False,
         author = authorModel(
             username = "pipin",
             name = "KJ",
@@ -23,11 +21,17 @@ async def createNewNote():
     )
     await createNote(newNote)
 
+async def changeNote(noteTitle):
+    newText = input("New text: ")
+    await updateNote(noteTitle, newText)
 
 async def main():
+    print(db[0].title)
     var = input("What would you like to do? ")
     if var == "create_new":
         await createNewNote()
+    if var == "change":
+        titleCheck = db[0].title
+        await changeNote(titleCheck)
 
 asyncio.run(main())
-uvicorn.run(mainApp)

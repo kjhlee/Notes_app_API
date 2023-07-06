@@ -3,6 +3,7 @@ from uuid import uuid4
 from fastapi import FastAPI, HTTPException
 
 from models import Notes, authorModel
+import uvicorn
 
 #setting app to FastAPI library 
 app = FastAPI()
@@ -11,7 +12,7 @@ db: List[Notes] = [
     Notes(
         title = "newTitle",
         text = "closed",
-        locked = True,
+        locked = False,
         author = authorModel(
             username = "pipin",
             name = "KJ",
@@ -49,12 +50,13 @@ async def deleteNote(noteTitle: str):
         detail=f"Note with title '{noteTitle}' does not exist"
     )
 
-@app.put('/notes/{noteTitle}')
-async def updateNote(noteTitle: str, updatedNote: Notes):
+@app.put('/notes')
+async def updateNote(noteTitle: str, updatedText: str):
+    print(db)
     #need a way to make sure the account thats changing is the same and make sure the document is locked 
     for notes in db:
         if notes.title == noteTitle and notes.locked != False:
-            updatedNote.text = notes.text    
+            notes.text = updatedText    
             return {"status": 200}
     raise HTTPException(
         status_code = 404,
