@@ -2,8 +2,7 @@ from typing import List
 from uuid import uuid4
 from fastapi import FastAPI, HTTPException
 
-from models import Notes, authorModel
-import uvicorn
+from src.models import Notes, authorModel
 
 #setting app to FastAPI library 
 app = FastAPI()

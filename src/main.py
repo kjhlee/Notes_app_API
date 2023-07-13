@@ -1,6 +1,6 @@
 from fastapi import FastAPI
-from notes import *
-from models import Notes, authorModel
+from src.notes import *
+from src.models import Notes, authorModel
 import asyncio
 
 
